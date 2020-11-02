@@ -12,7 +12,7 @@ from pokedex.settings import DATABASE_URL
 class DBConnector:
     def __init__(self):
         print("Session criada")
-        pokedex.database.migration.upgrade()
+        pokedex.database.migrationn.upgrade()
         self.engine = create_engine(DATABASE_URL, echo=True)
         self.session = scoped_session(sessionmaker(bind=self.engine))
 
