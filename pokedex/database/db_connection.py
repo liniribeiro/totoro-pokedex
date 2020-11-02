@@ -1,10 +1,11 @@
 from contextlib import contextmanager
 
+from alembic import command
 from singleton_decorator import singleton
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 
-from pokedex.database.migrations import upgrade
+from pokedex.database.migrations import upgrade, alembic_cfg
 from pokedex.settings import DATABASE_URL
 
 
@@ -12,7 +13,7 @@ from pokedex.settings import DATABASE_URL
 class DBConnector:
     def __init__(self):
         print("Session criada")
-        upgrade()
+        command.upgrade(alembic_cfg, "head")
         self.engine = create_engine(DATABASE_URL, echo=True)
         self.session = scoped_session(sessionmaker(bind=self.engine))
 
