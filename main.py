@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 from pokedex.database.queries import save_coach, save_pokemon
-from pokedex.settings import DATABASE_URL
+from pokedex.settings import DATABASE_URL, HOST, PORT
 from pokedex.views.auth import auth_blueprint
 from pokedex.views.pokemon import pokemon_blueprint
 
@@ -71,4 +71,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host=HOST, port=PORT)
