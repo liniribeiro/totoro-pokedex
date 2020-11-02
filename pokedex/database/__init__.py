@@ -1,3 +1,3 @@
-from pokedex.database import migrationn
+from pokedex.database import migrations
 
 __all__ = ['migrations']
