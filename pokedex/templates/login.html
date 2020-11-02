@@ -1,0 +1,13 @@
+{% extends "template.html" %}
+
+{% block html_content %}
+    <div class="container">
+        <h1>Faça seu login</h1>
+        <form method="POST" action="{{ url_for('auth.go') }}">
+            <input type="hidden" name="next_page" value="{{ next_page or url_for('index') }}">
+            <p><label>Nome da treinadora:</label> <input class="form-control" type="text" name="treinadora" required></p>
+            <p><label>Senha:</label> <input class="form-control" type="password" name="senha" required></p>
+            <p><button class="btn btn-primary" type="submit">Entrar</button></p>
+        </form>
+    </div>
+{% endblock %}
