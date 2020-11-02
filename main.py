@@ -1,13 +1,13 @@
 from uuid import uuid4
 
-from flask import Flask, render_template, session
+from flask import Flask, session, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 
-from pokedex.database.queries import save_coach, save_pokemon
-from pokedex.settings import DATABASE_URL, HOST, PORT
-from pokedex.views.auth import auth_blueprint
-from pokedex.views.pokemon import pokemon_blueprint
+from database.queries import save_coach, save_pokemon
+from settings import DATABASE_URL, HOST, PORT
+from views.auth import auth_blueprint
+from views.pokemon import pokemon_blueprint
 
 
 def make_app() -> Flask:
@@ -71,4 +71,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=PORT)
+    app.run(host=HOST, port=PORT)
