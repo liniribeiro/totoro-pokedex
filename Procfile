@@ -1,1 +1,1 @@
-web: python main.py
+web: env PYTHONPATH=$PYTHONPATH:$PWD/pokedex python main.py
