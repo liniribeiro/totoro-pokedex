@@ -1,14 +1,13 @@
 from uuid import uuid4
 
-from flask import Flask, render_template, session
+from flask import Flask, session, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 
-from pokedex.database.queries import save_coach, save_pokemon
-from pokedex.settings import DATABASE_URL, HOST, PORT
-from pokedex.views.auth import auth_blueprint
-from pokedex.views.home import home_blueprint
-from pokedex.views.pokemon import pokemon_blueprint
+from database.queries import save_coach, save_pokemon
+from settings import DATABASE_URL, HOST, PORT
+from views.auth import auth_blueprint
+from views.pokemon import pokemon_blueprint
 
 
 def make_app() -> Flask:
@@ -22,7 +21,6 @@ def make_app() -> Flask:
 
     flask.register_blueprint(auth_blueprint)
     flask.register_blueprint(pokemon_blueprint)
-    flask.register_blueprint(home_blueprint)
 
     db = SQLAlchemy()
     db.init_app(flask)
@@ -64,6 +62,12 @@ def init_database():
 
 
 init_database()
+
+
+@app.route('/')
+def index():
+    logged_in = session.get('usuario_logado', None) is not None
+    return render_template('home.html', login=logged_in)
 
 
 if __name__ == "__main__":

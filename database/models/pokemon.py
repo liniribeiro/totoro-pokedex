@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String
 
-from pokedex.database.models.base import BaseModel
+from database.models import BaseModel
 
 
 class PokemonModel(BaseModel):

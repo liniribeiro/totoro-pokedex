@@ -6,14 +6,14 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from pokedex.database.models.base import DeclarativeBase
+from database.models.base import DeclarativeBase
 
 sys.path.insert(0, os.getcwd())
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 
-from pokedex.settings import DATABASE_URL
+from settings import DATABASE_URL
 
 config = context.config
 config.set_main_option('sqlalchemy.url', DATABASE_URL)

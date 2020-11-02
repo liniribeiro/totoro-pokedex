@@ -1,6 +1,6 @@
 from alembic import command
 
-from pokedex.database.migrations.config import alembic_cfg
+from database.migrations.config import alembic_cfg
 
 
 def revision():

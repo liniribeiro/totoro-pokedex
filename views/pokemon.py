@@ -3,7 +3,7 @@ from uuid import uuid4
 from flask import Blueprint, render_template, session, url_for, request
 from werkzeug.utils import redirect
 
-from pokedex.database.queries import get_all_pokemons, save_pokemon
+from database.queries import get_all_pokemons, save_pokemon
 
 pokemon_blueprint = Blueprint('pokemon', __name__, template_folder='templates')
 
