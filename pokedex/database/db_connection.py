@@ -4,7 +4,7 @@ from singleton_decorator import singleton
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 
-from pokedex.database.migrations.upgrade import upgrade
+from pokedex.database.migrations import upgrade
 from pokedex.settings import DATABASE_URL
 
 
