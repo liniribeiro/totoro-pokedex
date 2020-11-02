@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, session, flash, url_for
 from werkzeug.utils import redirect
 
-from database.queries import get_coach_by_username
+from pokedex.database.queries import get_coach_by_username
 
 auth_blueprint = Blueprint('auth', __name__, template_folder='/templates')
 

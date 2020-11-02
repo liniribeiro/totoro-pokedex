@@ -1,6 +1,6 @@
-from database.db_connection import DBConnector
-from database.models import Coach
-from database.models import PokemonModel
+from pokedex.database.db_connection import DBConnector
+from pokedex.database.models.coach import Coach
+from pokedex.database.models.pokemon import PokemonModel
 
 
 def get_coach_by_username(username):

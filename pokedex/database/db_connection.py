@@ -4,15 +4,15 @@ from singleton_decorator import singleton
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 
-import database
-from settings import DATABASE_URL
+import pokedex
+from pokedex.settings import DATABASE_URL
 
 
 @singleton
 class DBConnector:
     def __init__(self):
         print("Session criada")
-        database.migrations.upgrade()
+        pokedex.database.migrations.upgrade()
         self.engine = create_engine(DATABASE_URL, echo=True)
         self.session = scoped_session(sessionmaker(bind=self.engine))
 
