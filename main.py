@@ -8,7 +8,6 @@ from pokedex.database.queries import save_coach, save_pokemon
 from pokedex.settings import DATABASE_URL
 from pokedex.views.auth import auth_blueprint
 from pokedex.views.pokemon import pokemon_blueprint
-from pokedex.database.migrations import upgrade
 
 
 def make_app() -> Flask:
@@ -25,7 +24,6 @@ def make_app() -> Flask:
 
     db = SQLAlchemy()
     db.init_app(flask)
-    upgrade.upgrade()
 
     return flask
 
