@@ -3,6 +3,7 @@ from uuid import uuid4
 from flask import Flask, render_template, session
 from flask_sqlalchemy import SQLAlchemy
 
+from pokedex.database.migrations import upgrade
 from pokedex.database.queries import save_coach, save_pokemon
 from pokedex.settings import DATABASE_URL
 from pokedex.views.auth import auth_blueprint
@@ -23,6 +24,7 @@ def make_app() -> Flask:
 
     db = SQLAlchemy()
     db.init_app(flask)
+    upgrade()
 
     return flask
 
