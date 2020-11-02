@@ -28,12 +28,13 @@ URL_FOR
  > Adicionar banco de dados 
  > Criar AUTH com mais segurança
  
+
  
  
  
  
- 
- Instalar psicopg windows
+Instalar psicopg windows
+pip install --upgrade pip
  
 http://www.stickpeople.com/projects/python/win-psycopg/
 
@@ -42,5 +43,9 @@ Requirements from pipenv
 pipenv run pip freeze > requirements.txt
 
 
-Enviar alterações para heroku
-git push pokedex master
+Push heroku master: 
+git push heroku master
+
+Logs Heroku:
+heroku logs --tail
+
