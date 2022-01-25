@@ -1,11 +1,10 @@
-from uuid import uuid4
 
 from flask import Flask, session, render_template
 from flask_sqlalchemy import SQLAlchemy
 
-from pokedex.database.queries import save_coach, save_pokemon
 from pokedex.settings import DATABASE_URL, HOST, PORT
 from pokedex.views.auth import auth_blueprint
+from pokedex.views.movie import movie_blueprint
 
 from pokedex.views.pokemon import pokemon_blueprint
 
@@ -21,6 +20,7 @@ def make_app() -> Flask:
 
     flask.register_blueprint(auth_blueprint)
     flask.register_blueprint(pokemon_blueprint)
+    flask.register_blueprint(movie_blueprint)
 
     db = SQLAlchemy()
     db.init_app(flask)
@@ -29,39 +29,6 @@ def make_app() -> Flask:
 
 
 app = make_app()
-
-
-def init_database():
-    pokemons = [
-        {
-            'id': str(uuid4()),
-            'nome': 'Meowth',
-            'especie': 'Arranha Gato',
-            'tipo': 'Normal'
-        },
-        {
-            'id': str(uuid4()),
-            'nome': 'Charmander',
-            'especie': 'Lagarto',
-            'tipo': 'Fogo'
-        },
-        {
-            'id': str(uuid4()),
-            'nome': 'Clefairy',
-            'especie': 'Fada',
-            'tipo': 'Fada'
-        }
-    ]
-    coach = {
-        'id': str(uuid4()),
-        'name': 'alini',
-        'password': '123'
-    }
-    save_coach(coach)
-    [save_pokemon(pok) for pok in pokemons]
-
-
-init_database()
 
 
 @app.route('/')
